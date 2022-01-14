@@ -1,4 +1,4 @@
-import renderHome from "./home.js";
+import home from "./home.js";
 
 const displayController = ( () => {
 
@@ -6,7 +6,7 @@ const displayController = ( () => {
 
     const renderLanding = () => {
         content.appendChild(createButtonDiv());
-        content.appendChild(renderHome());
+        content.appendChild(home());
     };
 
     const createButtonDiv = () => {
@@ -30,6 +30,8 @@ const displayController = ( () => {
         let pageName = e.target.textContent;
         console.log(pageName);
     };
+
+    return {renderLanding};
 })();
 
 displayController.renderLanding();
