@@ -24,7 +24,7 @@ function renderHours(){
     for(let day of days){
 
         let li = document.createElement('li');
-        li.textContent = weekday;
+        li.textContent = day;
 
         if(day === "Sunday"){
             li.textContent += ": Closed";
