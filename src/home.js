@@ -52,8 +52,9 @@ function renderHome(){
     home.appendChild(renderImg());
     home.appendChild(renderHours());
 
+    return home;
 
 }
 
 
-export default renderHome();
+export default renderHome;
