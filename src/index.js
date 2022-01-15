@@ -23,6 +23,7 @@ const displayController = ( () => {
     const createButtonDiv = () => {
 
         let buttonDiv = document.createElement('div');
+        buttonDiv.id = "nav";
 
         const buttonNames = ["Home", "Menu", "Contact"];
 
