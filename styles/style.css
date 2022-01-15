@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+/* Nav Styling */
+#nav{
+    display: flex;
+    justify-content: center;
+    gap: calc(20px + 2vw);
+    margin: 10px;
+
+
+    width: 100vw;
+}
+
+button{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Home Styling */
+
+#home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-img{
+    display: block;
+    margin: 10px;
+
+    flex: 0 0 auto;
+    width: 500px;
+    height: auto;
+}
+
+#hours{
+    text-align: center;
+    margin: 10px;
+    
+    border: 2px solid black;
+
+    width: 500px;
+    font-size: calc(12px + 1vw);
+}
+
+#home-header{
+    font-size: 40px;
+    margin: 10px;
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+.menu-img{
+    display: block;
+}
+
+/* Menu Styling */
+
+
+/* Contact Styling */
