@@ -136,6 +136,7 @@ const menu = ( () => {
     const renderHeader = () => {
         let header = document.createElement('h1');
         header.textContent = "Our Menu";
+        header.id = "menu-header";
     
         return header;
     }
