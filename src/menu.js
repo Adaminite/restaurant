@@ -31,10 +31,10 @@ const menu = ( () => {
 
 
     const addToAppetizers = () => {
-        appetizers.push("Samosas", 3.99, "A South Asian favoriate. Fried flour encasing peas, carrots, onions, peppers, and " +
-        "your choice of potato or chicken.");
+        appetizers.push( menuItem("Samosas", 3.99, '#', "A South Asian favoriate. Fried flour encasing peas, carrots, onions, peppers, and " +
+        "your choice of potato or chicken.") );
 
-        appetizers.push();
+        appetizers.push( menuItem("Chick Peas", 2.99, '#', "Cup of Indian chickpeas (Garbanzo beans) served with a side of naan bread. ") );
     }
 
     const addToEntrees = () => {
@@ -57,14 +57,19 @@ const menu = ( () => {
         addToEntrees();
 
         let entreeList = document.createElement('div');
+        entreeList.id = "entrees";
         
         let header = document.createElement('h2');
         header.textContent = "Entrees";
         
         entreeList.appendChild(header);
 
+        let items = document.createElement('div');
+        items.classList.add('item-list');
+
         for(let entree of entrees){
             let item = document.createElement('div');
+            item.classList.add('list-item');
 
             let h3 = document.createElement('h3');
             h3.textContent = entree.getName() + "  " + entree.getPrice();
@@ -80,34 +85,75 @@ const menu = ( () => {
             item.appendChild(img);
             item.appendChild(p);
 
-            entreeList.appendChild(item);
+            items.appendChild(item);
         }
+        entreeList.appendChild(items);
 
         return entreeList;
     }
+
+    const compileAppetizers = () => {
+        addToAppetizers();
+
+        let appList = document.createElement('div');
+        appList.id = "appetizers";
+
+        let header = document.createElement('h2');
+        header.textContent = "Appetizers";
+
+        appList.appendChild(header);
+
+        let items = document.createElement('div');
+        items.classList.add('item-list');
+
+        for(let appetizer of appetizers){
+            let item = document.createElement('div');
+            item.classList.add('list-item');
+
+            let h3 = document.createElement('h3');
+            h3.textContent = appetizer.getName() + "  " + appetizer.getPrice();
+
+            let img = document.createElement('img');
+            img.setAttribute('src', kabob);
+            img.classList.add('menu-img');
+            
+            let p = document.createElement('p');
+            p.textContent = appetizer.getDesc();
+
+            item.appendChild(h3);
+            item.appendChild(img);
+            item.appendChild(p);
+
+            items.appendChild(item);
+
+        }
+
+        appList.appendChild(items);
+
+        return appList;
+    }
+
+    const renderHeader = () => {
+        let header = document.createElement('h1');
+        header.textContent = "Our Menu";
     
-    return {compileEntrees}
+        return header;
+    }
+
+    const compileMenu = () => {
+        let menuPage = document.createElement('div');
+        menuPage.id = "menu";
+
+        menuPage.appendChild( renderHeader() );
+        menuPage.appendChild( compileAppetizers() );
+        menuPage.appendChild( compileEntrees() );
+
+        return menuPage;
+    }
+
+    
+
+    return {compileMenu}
 })();
 
-
-
-function renderHeader(){
-    let header = document.createElement('h1');
-    header.textContent = "Menu";
-
-    return header;
-}
-
-
-function displayMenu(){
-    let menuPage = document.createElement('div');
-    menuPage.id = "menu";
-
-    menuPage.appendChild(renderHeader());
-
-    menuPage.appendChild( menu.compileEntrees() );
-
-    return menuPage;
-}
-
-export default displayMenu;
+export default menu.compileMenu;
