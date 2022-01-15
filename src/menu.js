@@ -1,3 +1,6 @@
+import kabob from "../images/samplekabob.jpeg";
+import "../styles/style.css";
+
 function menuItem(name, price, imgSrc, desc){
 
     const getName = () =>{ 
@@ -27,6 +30,13 @@ const menu = ( () => {
     let desserts = [];
 
 
+    const addToAppetizers = () => {
+        appetizers.push("Samosas", 3.99, "A South Asian favoriate. Fried flour encasing peas, carrots, onions, peppers, and " +
+        "your choice of potato or chicken.");
+
+        appetizers.push();
+    }
+
     const addToEntrees = () => {
         entrees.push( menuItem("Chicken Kabob", 10.99, "#", "A South Asian and mediteranian classic. 4 pieces " +
         "of perfectly grilled marinated chicken served with salad and a choice of white/brown rice.") );
@@ -43,15 +53,40 @@ const menu = ( () => {
     }
 
     const compileEntrees = () => {
-        let entrees = document.createElement('div');
+
+        addToEntrees();
+
+        let entreeList = document.createElement('div');
         
         let header = document.createElement('h2');
-        h2.textContent = "Entrees";
+        header.textContent = "Entrees";
         
-        entrees.appendChild(header);
+        entreeList.appendChild(header);
+
+        for(let entree of entrees){
+            let item = document.createElement('div');
+
+            let h3 = document.createElement('h3');
+            h3.textContent = entree.getName() + "  " + entree.getPrice();
+
+            let img = document.createElement('img');
+            img.setAttribute('src', kabob);
+            img.classList.add('menu-img');
+            
+            let p = document.createElement('p');
+            p.textContent = entree.getDesc();
+
+            item.appendChild(h3);
+            item.appendChild(img);
+            item.appendChild(p);
+
+            entreeList.appendChild(item);
+        }
+
+        return entreeList;
     }
     
-
+    return {compileEntrees}
 })();
 
 
@@ -65,12 +100,14 @@ function renderHeader(){
 
 
 function displayMenu(){
-    let menu = document.createElement('div');
-    menu.id = "menu";
+    let menuPage = document.createElement('div');
+    menuPage.id = "menu";
 
-    menu.appendChild(renderHeader());
+    menuPage.appendChild(renderHeader());
 
-    return menu;
+    menuPage.appendChild( menu.compileEntrees() );
+
+    return menuPage;
 }
 
 export default displayMenu;
