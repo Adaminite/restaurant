@@ -1,9 +1,11 @@
 import kabobImg from "../images/samplekabob.jpeg";
+import "../styles/style.css";
 
 function renderImg(){
     let img = document.createElement('img');
     img.setAttribute('src', kabobImg);
     img.setAttribute('alt', "A picture of our chicken kabob");
+    img.classList.add('home-img');
 
     return img;
 }
@@ -11,12 +13,18 @@ function renderImg(){
 function renderHeader(){
     let header = document.createElement('h1');
     header.textContent = "Omar's Kabob House";
+    header.id = "home-header";
 
     return header;
 }
 
 function renderHours(){
     let hours = document.createElement('div');
+    hours.id = "hours";
+    
+    let h2 = document.createElement('h2');
+    h2.textContent = "Hours";
+    hours.appendChild(h2);
 
     let list = document.createElement('ul');
     const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
